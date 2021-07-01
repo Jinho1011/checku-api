@@ -51,14 +51,15 @@ router.get("/load", async function (req, res, next) {
 router.get("/", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
-  const strStdNo = "202011361";
-  const strStdNm = "%EC%A0%84%EC%A7%84%ED%98%B8"; // encodeURI
-  const strYy = "2021";
-  const strShtm = "B01011";
-  const strDeptCd = "127428";
-  const strUserId = "202011361";
+  const strStdNo = req.body.strStdNo,
+    strStdNm = req.body.strStdNm,
+    strYy = req.body.strYy,
+    strShtm = req.body.strShtm,
+    strDeptCd = req.body.strDeptCd,
+    strUserId = req.body.strUserId;
 
   var data = `_AUTH_MENU_KEY=1122208&%40d1%23strStdNo=${strStdNo}&%40d1%23strStdNm=${strStdNm}&%40d1%23strYy=${strYy}&%40d1%23strShtm=${strShtm}&%40d1%23strSust=&%40d1%23strDeptCd=${strDeptCd}&%40d1%23strUserId=${strUserId}&%40d1%23strDeptGrd=0&%40d1%23strMenuCd=1122208&%40d%23=%40d1%23&%40d1%23=dmParam&%40d1%23tp=dm&`;
+  console.log("🚀 ~ file: user.js ~ line 62 ~ data", data);
 
   var config = {
     method: "post",
