@@ -24,7 +24,7 @@ router.get("/load", async function (req, res, next) {
       res.json(response.data);
     })
     .catch(function (error) {
-      console.log(error);
+      res.json(error);
     });
 });
 

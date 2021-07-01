@@ -35,7 +35,9 @@ router.get("/", function (req, res, next) {
         res.json({ JSESSIONID: JSESSIONID });
       }
     })
-    .catch(function (error) {});
+    .catch(function (error) {
+      res.json(error);
+    });
 });
 
 module.exports = router;
