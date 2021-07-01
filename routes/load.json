@@ -1,0 +1,86 @@
+{
+    "DS_LTSHTM_S": [
+        {
+            "ORD": "1  ",
+            "COMM_NM": "1학기",
+            "COMM_CD": "B01011",
+            "USE_FG": "Y",
+            "COMM_NM3": "Y",
+            "COMM_NM2": "1",
+            "COMM_SHTNM": "1",
+            "ITEM3": "0630",
+            "LCD": "B01",
+            "COMM_ENGNM": "1st SEMESTER",
+            "ITEM2": "0301",
+            "SCD": "011",
+            "ITEM1": "Y",
+            "REMK": null
+        },
+        {
+            "ORD": "2  ",
+            "COMM_NM": "2학기",
+            "COMM_CD": "B01012",
+            "USE_FG": "Y",
+            "COMM_NM3": "Y",
+            "COMM_NM2": "3",
+            "COMM_SHTNM": "2",
+            "ITEM3": "1231",
+            "LCD": "B01",
+            "COMM_ENGNM": "2nd SEMESTER",
+            "ITEM2": "0901",
+            "SCD": "012",
+            "ITEM1": "Y",
+            "REMK": null
+        },
+        {
+            "ORD": "4  ",
+            "COMM_NM": "하계 계절학기",
+            "COMM_CD": "B01014",
+            "USE_FG": "Y",
+            "COMM_NM3": null,
+            "COMM_NM2": "2",
+            "COMM_SHTNM": "하계",
+            "ITEM3": "0831",
+            "LCD": "B01",
+            "COMM_ENGNM": "SUMMER Session",
+            "ITEM2": "0701",
+            "SCD": "014",
+            "ITEM1": "Y",
+            "REMK": null
+        },
+        {
+            "ORD": "5  ",
+            "COMM_NM": "동계 계절학기",
+            "COMM_CD": "B01015",
+            "USE_FG": "Y",
+            "COMM_NM3": null,
+            "COMM_NM2": "4",
+            "COMM_SHTNM": "동계",
+            "ITEM3": "0229",
+            "LCD": "B01",
+            "COMM_ENGNM": "WINTER Session",
+            "ITEM2": "0101",
+            "SCD": "015",
+            "ITEM1": "Y",
+            "REMK": null
+        }
+    ],
+    "DS_SCOMSCHEDULEINQ": [
+        {
+            "SCHE_CD": "C82000",
+            "FR_DT": "20210114",
+            "REMK1": null,
+            "REMK2": null,
+            "WK_FG_CD": "100C82",
+            "REMK3": null,
+            "FR_TM": "0000",
+            "BASI_YY": "2021",
+            "BASI_SHTM": "B01011",
+            "ORGN_FG": "1",
+            "TO_DT": "20210713",
+            "WK_CTNT": "계절학기종료다음날",
+            "TO_TM": "2359",
+            "GRSC": "000000"
+        }
+    ]
+}
