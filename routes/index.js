@@ -1,9 +1,31 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+// api page
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Express" });
+});
+
+// onload
+router.get("/onload", async function (req, res, next) {
+  const JSESSIONID = req.cookies.JSESSIONID;
+
+  var config = {
+    method: "post",
+    url: "https://kuis.konkuk.ac.kr/Main/onLoad.do",
+    headers: {
+      Referer: "https://kuis.konkuk.ac.kr/index.do",
+      Cookie: `JSESSIONID=${JSESSIONID}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 module.exports = router;
