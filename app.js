@@ -8,7 +8,7 @@ var indexRouter = require("./routes/index");
 var loginRouter = require("./routes/login");
 var userRouter = require("./routes/user");
 var gradeRouter = require("./routes/grade");
-var subjectRouter = require("./routes/subject");
+var subjectRouter = require("./routes/subject/subject");
 
 var app = express();
 

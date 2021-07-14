@@ -42,6 +42,7 @@ router.get("/", async function (req, res, next) {
 
   axios(config)
     .then(function (response) {
+      console.log(typeof response.data);
       res.json(response.data);
     })
     .catch(function (error) {
