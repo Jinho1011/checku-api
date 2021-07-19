@@ -4,7 +4,7 @@ var axios = require("axios");
 var qs = require("qs");
 
 // 전체 성적
-router.get("/all", async function (req, res, next) {
+router.get("/all", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -35,7 +35,7 @@ router.get("/all", async function (req, res, next) {
     });
 });
 
-router.get("/load", async function (req, res, next) {
+router.get("/load", function (req, res, next) {
   var config = {
     method: "post",
     url: "https://kuis.konkuk.ac.kr/GradNowShtmGradeInq/load.do",
@@ -56,7 +56,7 @@ router.get("/load", async function (req, res, next) {
 });
 
 // 현재 학기
-router.get("/now", async function (req, res, next) {
+router.get("/now", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -89,7 +89,7 @@ router.get("/now", async function (req, res, next) {
     });
 });
 
-router.get("/now/:id", async function (req, res, next) {
+router.get("/now/:id", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -124,6 +124,6 @@ router.get("/now/:id", async function (req, res, next) {
 });
 
 // 계절 학기
-router.get("/seasonal", async function (req, res, next) {});
+router.get("/seasonal", function (req, res, next) {});
 
 module.exports = router;

@@ -3,7 +3,7 @@ var router = express.Router();
 var axios = require("axios");
 var qs = require("qs");
 
-router.get("/load", async function (req, res, next) {
+router.get("/load", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
   var data = "_AUTH_MENU_KEY=1122208";
 
@@ -27,7 +27,7 @@ router.get("/load", async function (req, res, next) {
     });
 });
 
-router.get("/", async function (req, res, next) {
+router.get("/", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({

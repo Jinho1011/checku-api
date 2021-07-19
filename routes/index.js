@@ -8,7 +8,7 @@ router.get("/", function (req, res, next) {
 });
 
 // onload
-router.get("/onload", async function (req, res, next) {
+router.get("/onload", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var config = {

@@ -6,7 +6,7 @@ var qs = require("qs");
 const openSusts = require("./openSust");
 
 // 전체 과목 검색
-router.get("/v1", async function (req, res, next) {
+router.get("/v1", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -50,7 +50,7 @@ router.get("/v1", async function (req, res, next) {
 });
 
 // 과목 번호 검색
-router.get("/v1/:id", async function (req, res, next) {
+router.get("/v1/:id", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -94,7 +94,7 @@ router.get("/v1/:id", async function (req, res, next) {
 });
 
 // 전체 과목 검색
-router.get("/v2", async function (req, res, next) {
+router.get("/v2", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -134,7 +134,7 @@ router.get("/v2", async function (req, res, next) {
 });
 
 // 현재 학기
-router.get("/ltShtm", async function (req, res, next) {
+router.get("/ltShtm", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -162,7 +162,7 @@ router.get("/ltShtm", async function (req, res, next) {
 });
 
 // 학과 검색
-router.get("/openSust", async function (req, res, next) {
+router.get("/openSust", function (req, res, next) {
   const KOR_NM = req.body.KOR_NM ?? "";
   const result = openSusts.filter((openSust) =>
     openSust.KOR_NM.includes(KOR_NM)
