@@ -6,7 +6,7 @@ var qs = require("qs");
 const openSusts = require("./openSust");
 
 // 전체 과목 검색
-router.get("/", async function (req, res, next) {
+router.get("/v1", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -42,7 +42,6 @@ router.get("/", async function (req, res, next) {
 
   axios(config)
     .then(function (response) {
-      console.log(typeof response.data);
       res.json(response.data);
     })
     .catch(function (error) {
@@ -51,7 +50,7 @@ router.get("/", async function (req, res, next) {
 });
 
 // 과목 번호 검색
-router.get("/sbjtId/:id", async function (req, res, next) {
+router.get("/v1/:id", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var data = qs.stringify({
@@ -88,6 +87,74 @@ router.get("/sbjtId/:id", async function (req, res, next) {
   axios(config)
     .then(function (response) {
       res.json(response.data);
+    })
+    .catch(function (error) {
+      res.json(error);
+    });
+});
+
+// 전체 과목 검색
+router.get("/v2", async function (req, res, next) {
+  const JSESSIONID = req.cookies.JSESSIONID;
+
+  var data = qs.stringify({
+    _AUTH_MENU_KEY: "1130420",
+    "@d1#ltYy": req.body.ltYy ?? "",
+    "@d1#ltShtm": req.body.ltShtm ?? "",
+    "@d1#openSust": req.body.openSust ?? "",
+    "@d1#pobtDiv": req.body.pobtDiv ?? "",
+    "@d1#sbjtId": req.body.sbjtId ?? "",
+    "@d1#corsKorNm": req.body.corsKorNm ?? "",
+    "@d1#sprfNo": "",
+    "@d1#argDeptFg": "1",
+    "@d1#arglangNm": "",
+    "@d#": "@d1#",
+    "@d1#": "dmParam",
+    "@d1#tp": "dm",
+  });
+
+  var config = {
+    method: "post",
+    url: "https://kuis.konkuk.ac.kr/CourTotalTimetableInq/find.do",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      Referer: "https://kuis.konkuk.ac.kr/index.do",
+      Cookie: `JSESSIONID=${JSESSIONID}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      res.json(error);
+    });
+});
+
+// 현재 학기
+router.get("/ltShtm", async function (req, res, next) {
+  const JSESSIONID = req.cookies.JSESSIONID;
+
+  var data = qs.stringify({
+    _AUTH_MENU_KEY: 1130420,
+  });
+
+  var config = {
+    method: "post",
+    url: "https://kuis.konkuk.ac.kr/CourTotalTimetableInq/load.do",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      Referer: "https://kuis.konkuk.ac.kr/index.do",
+      Cookie: `JSESSIONID=${JSESSIONID}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      res.json({ BASI_SHTM: response.data.DS_SCOMSCHEDULEINQ[0].BASI_SHTM });
     })
     .catch(function (error) {
       res.json(error);
