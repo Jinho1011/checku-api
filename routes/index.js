@@ -4,7 +4,9 @@ var router = express.Router();
 
 // api page
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.redirect(
+    "https://web.postman.co/workspace/My-Workspace~3fc9d5ce-773a-4d37-8af7-f9e540d3314a/documentation/5717096-013ad044-d58f-4f6b-9f00-b68d24454759"
+  );
 });
 
 // onload
