@@ -46,8 +46,6 @@ router.get("/", async function (req, res, next) {
     "@d1#tp": "dm",
   });
 
-  console.log(data);
-
   var config = {
     method: "post",
     url: "https://kuis.konkuk.ac.kr/GrdtStdSimul/findSearch2.do",
