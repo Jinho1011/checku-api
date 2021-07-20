@@ -62,7 +62,7 @@ router.get("/v1/:id", function (req, res, next) {
     "@d1#pobtDiv": req.body.pobtDiv ?? "",
     "@d1#argTmnoDay": "",
     "@d1#stdNo": req.body.stdNo ?? "",
-    "@d1#sbjtId": req.params.id,
+    "@d1#sbjtId": req.params.id ?? "",
     "@d1#corsKorNm": "",
     "@d1#sprfNo": "",
     "@d1#arglangNm": "",
