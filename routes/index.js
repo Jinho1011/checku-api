@@ -1,16 +1,15 @@
 var express = require("express");
+var path = require("path");
 var axios = require("axios");
 var router = express.Router();
 
 // api page
 router.get("/", function (req, res, next) {
-  res.redirect(
-    "https://web.postman.co/workspace/My-Workspace~3fc9d5ce-773a-4d37-8af7-f9e540d3314a/documentation/5717096-013ad044-d58f-4f6b-9f00-b68d24454759"
-  );
+  res.sendFile(path.join(__dirname + "/../index.html"));
 });
 
 // onload
-router.get("/onload", function (req, res, next) {
+router.post("/onload", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
   var config = {

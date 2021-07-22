@@ -3,7 +3,7 @@ var router = express.Router();
 var axios = require("axios");
 var qs = require("qs");
 
-router.get("/", function (req, res, next) {
+router.post("/", function (req, res, next) {
   var data = qs.stringify({
     "@d1#SINGLE_ID": req.body.id,
     "@d1#PWD": req.body.pwd,

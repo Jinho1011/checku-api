@@ -33,7 +33,7 @@ const getCorsYy = (JSESSIONID, strStdNo) => {
 };
 
 // 졸업 시뮬레이션
-router.get("/", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
   const corsYy = await getCorsYy(JSESSIONID, req.body.strStdNo);
 
