@@ -5,7 +5,7 @@ var router = express.Router();
 
 // api page
 router.get("/", function (req, res, next) {
-  res.sendFile(path.join(__dirname + "/../index.html"));
+  res.redirect("https://documenter.getpostman.com/view/5717096/TzmChtFj");
 });
 
 // onload
