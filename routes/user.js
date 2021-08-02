@@ -5,7 +5,19 @@ var qs = require("qs");
 
 router.post("/load", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  var data = "_AUTH_MENU_KEY=1122208";
+  const key = req.cookies.crypto;
+
+  var data = qs.stringify({
+    _AUTH_MENU_KEY: "1122208",
+    _ex6tokLu: key,
+    _ex6tokzIT: key,
+    _ex6tokIpuLc: key,
+    _ex6tokA: key,
+    _ex6tokWTzeA: key,
+    _ex6tokez: key,
+    _ex6tokpeAW: key,
+    _ex6tokc: key,
+  });
 
   var config = {
     method: "post",
@@ -29,22 +41,25 @@ router.post("/load", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
+  const key = req.cookies.crypto;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
+    _ex6tokLu: key,
+    _ex6tokzIT: key,
+    _ex6tokIpuLc: key,
+    _ex6tokA: key,
+    _ex6tokWTzeA: key,
+    _ex6tokez: key,
+    _ex6tokpeAW: key,
+    _ex6tokc: key,
     "@d1#strStdNo": req.body.strStdNo,
-    // "@d1#strStdNm": req.body.strStdNm,
-    // "@d1#strYy": req.body.strYy,
-    // "@d1#strShtm": req.body.strShtm,
-    // "@d1#strSust": " ",
-    // "@d1#strDeptCd": req.body.strDeptCd,
-    // "@d1#strUserId": req.body.strUserId,
-    // "@d1#strDeptGrd": "0",
-    "@d1#strMenuCd": "1122208",
     "@d#": "@d1#",
-    // "@d1#": "dmParam",
+    "@d1#": "dmParam",
     "@d1#tp": "dm",
   });
+
+  console.log(data);
 
   var config = {
     method: "post",

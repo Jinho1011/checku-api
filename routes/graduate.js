@@ -6,6 +6,14 @@ var qs = require("qs");
 const getCorsYy = (JSESSIONID, strStdNo) => {
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1170201",
+    _ex6tokLu: key,
+    _ex6tokzIT: key,
+    _ex6tokIpuLc: key,
+    _ex6tokA: key,
+    _ex6tokWTzeA: key,
+    _ex6tokez: key,
+    _ex6tokpeAW: key,
+    _ex6tokc: key,
     "@d1#stdNo": strStdNo,
     "@d#": "@d1#",
     "@d1#": "dmParam",
@@ -35,10 +43,19 @@ const getCorsYy = (JSESSIONID, strStdNo) => {
 // 졸업 시뮬레이션
 router.post("/", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
+  const key = req.cookies.crypto;
   const corsYy = await getCorsYy(JSESSIONID, req.body.strStdNo);
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1170201",
+    _ex6tokLu: key,
+    _ex6tokzIT: key,
+    _ex6tokIpuLc: key,
+    _ex6tokA: key,
+    _ex6tokWTzeA: key,
+    _ex6tokez: key,
+    _ex6tokpeAW: key,
+    _ex6tokc: key,
     "@d1#stdNo": req.body.stdNo ?? "",
     "@d1#corsYy": corsYy ?? "",
     "@d#": "@d1#",
