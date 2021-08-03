@@ -47,13 +47,13 @@ router.post("/", function (req, res, next) {
   };
 
   axios(config)
-    .then(function (response) {
+    .then(async function (response) {
       let JSESSIONID = response.headers["set-cookie"][1];
       if (JSESSIONID == undefined) {
         res.json(response.data);
       } else {
-        const key = await getCryptoKey(JSESSIONID);
         JSESSIONID = JSESSIONID.split("; Path")[0].split("JSESSIONID=")[1];
+        const key = await getCryptoKey(JSESSIONID);
 
         res.cookie("crypto", Buffer.from(key, "utf8").toString("base64"));
         res.cookie("JSESSIONID", JSESSIONID);
