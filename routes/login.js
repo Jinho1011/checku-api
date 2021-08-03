@@ -3,6 +3,29 @@ var router = express.Router();
 var axios = require("axios");
 var qs = require("qs");
 
+const getCryptoKey = (JSESSIONID) => {
+  var config = {
+    method: "get",
+    url: "https://kuis.konkuk.ac.kr/index.do",
+    headers: {
+      Referer: "https://kuis.konkuk.ac.kr/index.do",
+      Cookie: `JSESSIONID=${JSESSIONID}`,
+    },
+  };
+
+  return axios(config)
+    .then(function (response) {
+      let string = response.data;
+      string = string.split('"_mt":"')[1];
+      string = string.split('"});cpr.core.')[0];
+
+      return string;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 router.post("/", function (req, res, next) {
   var data = qs.stringify({
     "@d1#SINGLE_ID": req.body.id,
@@ -25,13 +48,16 @@ router.post("/", function (req, res, next) {
 
   axios(config)
     .then(function (response) {
-      var JSESSIONID = response.headers["set-cookie"][1];
+      let JSESSIONID = response.headers["set-cookie"][1];
       if (JSESSIONID == undefined) {
         res.json(response.data);
       } else {
+        const key = await getCryptoKey(JSESSIONID);
         JSESSIONID = JSESSIONID.split("; Path")[0].split("JSESSIONID=")[1];
 
+        res.cookie("crypto", Buffer.from(key, "utf8").toString("base64"));
         res.cookie("JSESSIONID", JSESSIONID);
+
         res.json({ JSESSIONID: JSESSIONID });
       }
     })
