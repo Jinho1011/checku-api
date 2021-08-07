@@ -5,18 +5,12 @@ var qs = require("qs");
 
 router.post("/load", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies.crypto;
+  const key = req.cookies._ex_key;
+  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
-    _ex6tokLu: key,
-    _ex6tokzIT: key,
-    _ex6tokIpuLc: key,
-    _ex6tokA: key,
-    _ex6tokWTzeA: key,
-    _ex6tokez: key,
-    _ex6tokpeAW: key,
-    _ex6tokc: key,
+    [key]: value,
   });
 
   var config = {
@@ -41,18 +35,14 @@ router.post("/load", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies.crypto;
+  const key = req.cookies._ex_key;
+  console.log("🚀 ~ file: user.js ~ line 39 ~ key", key);
+  const value = req.cookies._ex_value;
+  console.log("🚀 ~ file: user.js ~ line 41 ~ value", value);
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
-    _ex6tokLu: key,
-    _ex6tokzIT: key,
-    _ex6tokIpuLc: key,
-    _ex6tokA: key,
-    _ex6tokWTzeA: key,
-    _ex6tokez: key,
-    _ex6tokpeAW: key,
-    _ex6tokc: key,
+    [key]: value,
     "@d1#strStdNo": req.body.strStdNo,
     "@d#": "@d1#",
     "@d1#": "dmParam",

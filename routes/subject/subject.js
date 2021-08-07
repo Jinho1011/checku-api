@@ -8,7 +8,8 @@ const openSusts = require("./openSust");
 // 전체 과목 검색
 router.post("/v1", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies.crypto;
+  const key = req.cookies._ex_key;
+  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130529",
@@ -53,7 +54,8 @@ router.post("/v1", function (req, res, next) {
 // 과목 번호 검색
 router.post("/v1/:id", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies.crypto;
+  const key = req.cookies._ex_key;
+  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130529",
@@ -98,18 +100,12 @@ router.post("/v1/:id", function (req, res, next) {
 // 전체 과목 검색
 router.post("/v2", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies.crypto;
+  const key = req.cookies._ex_key;
+  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130420",
-    _ex6tokLu: key,
-    _ex6tokzIT: key,
-    _ex6tokIpuLc: key,
-    _ex6tokA: key,
-    _ex6tokWTzeA: key,
-    _ex6tokez: key,
-    _ex6tokpeAW: key,
-    _ex6tokc: key,
+    [key]: value,
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
     "@d1#openSust": req.body.openSust ?? "",
@@ -147,18 +143,12 @@ router.post("/v2", function (req, res, next) {
 // 현재 학기
 router.post("/ltShtm", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies.crypto;
+  const key = req.cookies._ex_key;
+  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: 1130420,
-    _ex6tokLu: key,
-    _ex6tokzIT: key,
-    _ex6tokIpuLc: key,
-    _ex6tokA: key,
-    _ex6tokWTzeA: key,
-    _ex6tokez: key,
-    _ex6tokpeAW: key,
-    _ex6tokc: key,
+    [key]: value,
   });
 
   var config = {
