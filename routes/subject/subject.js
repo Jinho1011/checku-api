@@ -13,6 +13,7 @@ router.post("/v1", function (req, res, next) {
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130529",
+    [key]: value,
     "@d1#openSust": req.body.openSust ?? "",
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
@@ -59,6 +60,7 @@ router.post("/v1/:id", function (req, res, next) {
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130529",
+    [key]: value,
     "@d1#openSust": req.body.openSust ?? "",
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
