@@ -5,12 +5,9 @@ var qs = require("qs");
 
 router.post("/load", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
-    [key]: value,
   });
 
   var config = {
@@ -42,7 +39,6 @@ router.post("/", function (req, res, next) {
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
-    [key]: value,
     "@d1#strStdNo": req.body.strStdNo,
     "@d#": "@d1#",
     "@d1#": "dmParam",

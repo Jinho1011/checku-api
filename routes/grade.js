@@ -6,12 +6,9 @@ var qs = require("qs");
 // 전체 성적
 router.post("/all", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
-    [key]: value,
     "@d1#strStdNo": req.body.strStdNo ?? "",
     "@d1#strMenuCd": "1122208",
     "@d#": "@d1#",
@@ -61,12 +58,9 @@ router.post("/load", function (req, res, next) {
 // 현재 학기
 router.post("/now", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1140302",
-    [key]: value,
     "@d1#basiYy": req.body.basiYy ?? "",
     "@d1#basiShtm": req.body.basiShtm ?? "",
     "@d1#stdNo": req.body.stdNo ?? "",
@@ -97,12 +91,9 @@ router.post("/now", function (req, res, next) {
 
 router.post("/now/:id", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1140302",
-    [key]: value,
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
     "@d1#sbjtId": req.params.id,

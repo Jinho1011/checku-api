@@ -8,12 +8,9 @@ const openSusts = require("./openSust");
 // 전체 과목 검색
 router.post("/v1", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130529",
-    [key]: value,
     "@d1#openSust": req.body.openSust ?? "",
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
@@ -55,12 +52,9 @@ router.post("/v1", function (req, res, next) {
 // 과목 번호 검색
 router.post("/v1/:id", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130529",
-    [key]: value,
     "@d1#openSust": req.body.openSust ?? "",
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
@@ -102,12 +96,9 @@ router.post("/v1/:id", function (req, res, next) {
 // 전체 과목 검색
 router.post("/v2", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1130420",
-    [key]: value,
     "@d1#ltYy": req.body.ltYy ?? "",
     "@d1#ltShtm": req.body.ltShtm ?? "",
     "@d1#openSust": req.body.openSust ?? "",
@@ -145,12 +136,9 @@ router.post("/v2", function (req, res, next) {
 // 현재 학기
 router.post("/ltShtm", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: 1130420,
-    [key]: value,
   });
 
   var config = {

@@ -6,7 +6,6 @@ var qs = require("qs");
 const getCorsYy = (JSESSIONID, strStdNo) => {
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1170201",
-    [key]: value,
     "@d1#stdNo": strStdNo,
     "@d#": "@d1#",
     "@d1#": "dmParam",
@@ -36,13 +35,11 @@ const getCorsYy = (JSESSIONID, strStdNo) => {
 // 졸업 시뮬레이션
 router.post("/", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  const value = req.cookies._ex_value;
+
   const corsYy = await getCorsYy(JSESSIONID, req.body.strStdNo);
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1170201",
-    [key]: value,
     "@d1#stdNo": req.body.stdNo ?? "",
     "@d1#corsYy": corsYy ?? "",
     "@d#": "@d1#",
