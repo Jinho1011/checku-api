@@ -3,20 +3,20 @@ var router = express.Router();
 var axios = require("axios");
 var qs = require("qs");
 
-const getJSESSIONID = () => {
-  var config = {
-    method: "get",
-    url: "https://kuis.konkuk.ac.kr/index.do",
-  };
+// const getJSESSIONID = () => {
+//   var config = {
+//     method: "get",
+//     url: "https://kuis.konkuk.ac.kr/index.do",
+//   };
 
-  return axios(config)
-    .then(function (response) {
-      return response;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
+//   return axios(config)
+//     .then(function (response) {
+//       return response;
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// };
 
 router.post("/", function (req, res, next) {
   var data = qs.stringify({
@@ -34,21 +34,22 @@ router.post("/", function (req, res, next) {
     headers: {
       Referer: "https://kuis.konkuk.ac.kr/index.do",
       "Content-Type": "application/x-www-form-urlencoded",
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
     },
     data: data,
   };
 
   axios(config)
     .then(async function (response) {
-      let JSESSIONID = await getJSESSIONID();
-      JSESSIONID = JSESSIONID.headers["set-cookie"][1];
+      let JSESSIONID = response.headers["set-cookie"][1];
 
       if (JSESSIONID == undefined) {
         res.json(response.data);
       } else {
         JSESSIONID = JSESSIONID.split("; Path")[0].split("JSESSIONID=")[1];
 
-        res.cookie("JSESSIONID", JSESSIONID);
+        res.cookie("JSESSIONID", JSESSIONID, { encode: (v) => v });
 
         res.json({ JSESSIONID: JSESSIONID });
       }

@@ -32,10 +32,7 @@ router.post("/load", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
-  const key = req.cookies._ex_key;
-  console.log("🚀 ~ file: user.js ~ line 39 ~ key", key);
-  const value = req.cookies._ex_value;
-  console.log("🚀 ~ file: user.js ~ line 41 ~ value", value);
+  console.log("🚀 ~ file: user.js ~ line 36 ~ JSESSIONID", JSESSIONID);
 
   var data = qs.stringify({
     _AUTH_MENU_KEY: "1122208",
@@ -44,8 +41,6 @@ router.post("/", function (req, res, next) {
     "@d1#": "dmParam",
     "@d1#tp": "dm",
   });
-
-  console.log(data);
 
   var config = {
     method: "post",
