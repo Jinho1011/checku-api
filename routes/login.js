@@ -3,21 +3,6 @@ var router = express.Router();
 var axios = require("axios");
 var qs = require("qs");
 
-// const getJSESSIONID = () => {
-//   var config = {
-//     method: "get",
-//     url: "https://kuis.konkuk.ac.kr/index.do",
-//   };
-
-//   return axios(config)
-//     .then(function (response) {
-//       return response;
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-// };
-
 router.post("/", function (req, res, next) {
   var data = qs.stringify({
     "@d1#SINGLE_ID": req.body.id,

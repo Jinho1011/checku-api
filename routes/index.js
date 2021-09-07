@@ -1,5 +1,4 @@
 var express = require("express");
-var path = require("path");
 var axios = require("axios");
 var router = express.Router();
 
@@ -12,16 +11,13 @@ router.get("/", function (req, res, next) {
 router.post("/onload", async function (req, res, next) {
   const JSESSIONID = req.cookies.JSESSIONID;
 
-  var config = {
-    method: "post",
-    url: "https://kuis.konkuk.ac.kr/Main/onLoad.do",
-    headers: {
-      Referer: "https://kuis.konkuk.ac.kr/index.do",
-      Cookie: `JSESSIONID=${JSESSIONID}`,
-    },
-  };
+  var header = config(
+    "https://kuis.konkuk.ac.kr/Main/onLoad.do",
+    JSESSIONID,
+    {}
+  );
 
-  axios(config)
+  axios(header)
     .then(function (response) {
       res.json(response.data);
     })
