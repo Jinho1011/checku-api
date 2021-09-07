@@ -113,6 +113,21 @@ const getCryptoKey = (JSESSIONID) => {
     });
 };
 
+const getJSESSIONID = () => {
+  var config = {
+    method: "get",
+    url: "https://kuis.konkuk.ac.kr/index.do",
+  };
+
+  return axios(config)
+    .then(function (response) {
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 router.post("/", function (req, res, next) {
   var data = qs.stringify({
     "@d1#SINGLE_ID": req.body.id,
@@ -135,7 +150,9 @@ router.post("/", function (req, res, next) {
 
   axios(config)
     .then(async function (response) {
-      let JSESSIONID = response.headers["set-cookie"][1];
+      let JSESSIONID = await getJSESSIONID();
+      JSESSIONID = JSESSIONID.headers["set-cookie"][1];
+
       if (JSESSIONID == undefined) {
         res.json(response.data);
       } else {
