@@ -174,4 +174,4 @@ const openSusts = [
   { DEPT_CD: 127307, KOR_NM: "힐링바이오공유대학(글로컬) 반려동물융합전공" },
 ];
 
-module.exports = openSusts;
+module.openSusts = openSusts;

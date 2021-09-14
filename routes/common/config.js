@@ -17,4 +17,4 @@ const config = (url, JSESSIONID, data) => {
   return header;
 };
 
-export default config;
+module.config = config;

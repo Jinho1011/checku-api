@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var axios = require("axios");
 
-const openSusts = require("/common/openSust");
+const openSusts = require("./common/openSust");
 
 // 전체 과목 검색
 router.post("/v1", function (req, res, next) {
